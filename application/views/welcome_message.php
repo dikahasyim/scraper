@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+	<title>Scraper !</title>
 
 	<style type="text/css">
 
@@ -68,21 +68,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
+	<h1>Welcome to Scraper!</h1>
 
 	<div id="body">
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
-
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
-
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/Welcome.php</code>
-
-		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
+		<p>This is a web scraper to get data from <a href="https://www.target.com">target.com</a></p>
+		<p>
+			To search goods, just input what you want to find below
+		</p>
+		<form action="<?php echo base_url('scraper/s')?>" method="get">
+                <span>Search :</span> <input type="text" name="search"/> <input type="submit" value="GO!">
+            </form>
+            <br />
+            <?php
+            if (isset($result)){
+                echo 'Page url: ' . $long_url . '<hr />';
+                echo $result;
+            }
+            if (isset($err)){
+                echo "<h3>$err</h3>";
+            }
+            ?>
 	</div>
 
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
+	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds.</p>
 </div>
 
 </body>
